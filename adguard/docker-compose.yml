@@ -1,0 +1,14 @@
+services:
+  adguardhome:
+    container_name: adguardhome
+    image: adguard/adguardhome:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"     # Web setup screen
+      - "53:53/tcp"     # DNS
+      - "53:53/udp"     # DNS
+      - "3001:80"         # Web UI
+      - "3002:443"       # HTTPS
+    volumes:
+      - ./work:/opt/adguardhome/work
+      - ./config:/opt/adguardhome/conf
